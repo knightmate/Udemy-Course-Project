@@ -1,0 +1,14 @@
+{
+  "name": "udemy_project",
+  "version": "1.0.0",
+  "description": "Udemy course project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Meghraj deshmukh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
