@@ -1,52 +1,36 @@
- const products=[];
- const fs=require('fs');
- const path=require('path');
+ const Sequilize=require('sequelize');
+ const sequelize=require('../util/database');
 
-module.exports = class Product {
-    constructor(t) {
-        this.title = t;
-    }
 
-    save() {
-         
-          
-         console.log(this);
-         let product=[];
-         product.push(this);
-        
-      fs.writeFile(path.join(__dirname,'../data/product.json'),JSON.stringify(product) ,function(err){
-         
-        if(err)
-        console.log(err);
+ const product=sequelize.define('product', {
 
-      });
-     
-    }
-      
-    static fetchAll(cb) {
+  id:{
+    type:Sequilize.INTEGER,
+    autoIncrement:true,
+    allowNull:false,
+    primaryKey:true,
+  },
+  title:Sequilize.STRING,
 
-      fs.readFile(path.join(__dirname,'../data/product.json'), function(err,fileContent){
+  price:{
+    type:Sequilize.DOUBLE,
+    allowNull:false,
+  },
 
-        if(err)
-        cb([]);
-        else{
+  imageUrl:{
+    type:Sequilize.STRING,
+    allowNull:false,
+  },
+  description:{
+    type:Sequilize.STRING,
+    allowNull:false,
+  }
 
-         
-          if(fileContent.toString().length>0)
-          {
-            cb( JSON.parse(fileContent) );
-          }else 
-           cb([]);
-      
 
-        
-        }
-     
-      });
-      
+ });
 
-    }
  
 
-}
-
+ module.exports=product;
+ 
+  
